@@ -1,7 +1,7 @@
 .banner_container {
   display: grid;
-  grid-template-columns: 61.1% auto auto; /* banner_content_1 chiếm 61.1%, banner_content_2 và banner_content_3 sẽ sử dụng chiều rộng tự động còn lại */
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: 61.1% auto; /* banner_content_1 chiếm 61.1%, banner_content_2 và banner_content_3 sẽ sử dụng chiều rộng tự động còn lại */
+  grid-template-rows: repeat(1, 1fr);
   grid-column-gap: 10px;
   grid-row-gap: 10px;
 }

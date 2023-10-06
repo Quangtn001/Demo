@@ -1,5 +1,19 @@
 {{ 'section-product-list.css' | asset_url | stylesheet_tag }}
 
+{%- liquid
+  assign products_to_display = section.settings.collection.all_products_count
+
+  if section.settings.collection.all_products_count > section.settings.products_to_show
+    assign products_to_display = section.settings.products_to_show
+    assign more_in_collection = true
+  endif
+
+  assign show_desktop_slider = false
+  if section.settings.enable_desktop_slider and products_to_display > section.settings.columns_desktop
+    assign show_desktop_slider = true
+  endif
+-%}
+
 <section class="page-width" style="margin-bottom:80px; padding-top:{{ section.settings.padding_top }}px ; padding-bottom:{{ section.settings.padding_bottom }}px">
   <ul class="tabs">
     {% for block in section.blocks %}
@@ -10,17 +24,16 @@
   </ul>
   {% for block in section.blocks %}
     <div id="tab-{{ forloop.index }}">
-      <div class="product-container">
-        {% for product in block.settings.collection.products %}
-          {% comment %} {{ product | json }} {% endcomment %}
+      <div class="grid--{{ section.settings.columns_desktop }}">
+        {% for product in block.settings.collection.products limit: section.settings.products_to_show %}
           {% if product != null %}
             <div class="product_item">
               <a href="{{ product.url }}">
                 <div class="product-image">
-                  <img src="{{ product.featured_media |img_url: '' }}" alt="">
+                  <img src="{{ product.featured_media | img_url: '' }}" alt="">
                   <img
                     class="alt-img"
-                    src="{{ product.featured_media |img_url: '' }}"
+                    src="{{ product.featured_media | img_url: '' }}"
                     alt="">
                 </div>
               </a>
@@ -28,33 +41,32 @@
                 <a href="{{ product.url }}" class="product-info_heading">
                   {{ product.title | escape }}</a>
                 <p class="product-info_price">
-                  {{ product.price | money }}</a>
-              </p>
-            </div>
-            <div class="product-action">
-              <a href="#" class="icon">
-                {% render 'eyes-icon' %}
-              </a>
-              <a href="#" class="icon add-to-cart">
-                {% render 'cart-icon' %}
-              </a>
-              <a href="#" class="icon whist-list">
-                {% render 'heart-icon' %}
-              </a>
-            </div>
+                  {{ product.price | money }}</p>
+              </div>
+              <div class="product-action">
+                <a href="{{ product.url }}" class="icon">
+                  {% render 'eyes-icon' %}
+                </a>
+                <a href="#" class="icon add-to-cart">
+                  {% render 'cart-icon' %}
+                </a>
+                <a href="#" class="icon whist-list">
+                  {% render 'heart-icon' %}
+                </a>
+              </div>
             </div>
           {% else %}
-            <h2>There are no product in this collection</h2>
+            <h2>There are no products in this collection</h2>
           {% endif %}
         {% endfor %}
-
+      </div>
+      <div class="see-all">
+        <a href="{{ block.settings.collection.url }}">View all products</a>
       </div>
     </div>
-
   {% endfor %}
-  <div class="see-all">
-    <a href="/collection/all">View all products</a>
-  </div>
+
+
 
   <script
     src="https://code.jquery.com/jquery-3.7.1.min.js"
@@ -91,11 +103,7 @@
     "tag": "section",
     "class": "section",
     "settings": [
-      {
-        "type": "collection",
-        "id": "collection",
-        "label": "Select collection"
-      },
+
       {
         "type": "range",
         "id": "products_to_show",
@@ -104,8 +112,7 @@
         "step": 1,
         "default": 4,
         "label": "Product to show"
-      },
-      {
+      }, {
         "type": "range",
         "id": "columns_desktop",
         "min": 1,
@@ -113,8 +120,7 @@
         "step": 1,
         "default": 4,
         "label": "Number of columns in desktop"
-      },
-      {
+      }, {
         "type": "range",
         "id": "padding_top",
         "min": 0,
