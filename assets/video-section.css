@@ -14,7 +14,8 @@
 }
 
 .video-section__media.deferred-media {
-  box-shadow: var(--media-shadow-horizontal-offset) var(--media-shadow-vertical-offset) var(--media-shadow-blur-radius)
+  box-shadow: var(--media-shadow-horizontal-offset)
+    var(--media-shadow-vertical-offset) var(--media-shadow-blur-radius)
     rgba(var(--color-shadow), var(--media-shadow-opacity));
 }
 
@@ -45,4 +46,31 @@
 
 .video-section__media.media-fit-cover video {
   object-fit: cover;
+}
+
+/* Đảm bảo rằng phần tử chứa video có lớp CSS là "video-section__media" */
+.video-section__media {
+  position: relative;
+}
+
+.title-video {
+  position: absolute;
+  top: 30%;
+  left: 74%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  font-family: Playfair Display, Helvetica Neue, Arial, sans-serif;
+  color: #fff;
+  font-size: 72px;
+  margin-bottom: 10px;
+
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .title-video {
+    font-size: 30px;
+    left: 65%;
+    margin-top: 0;
+  }
 }

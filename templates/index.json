@@ -1,75 +1,117 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "118908e5-1a09-4e12-bce0-66b31cd3604e": {
+      "type": "category-list",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "template--21206638625047__118908e5-1a09-4e12-bce0-66b31cd3604e-image-1": {
+          "type": "image",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "image": "shopify://shop_images/m7-banner-1.progressive_338e2757-da30-49f6-bfac-803cc166c2d8.jpg",
+            "title_1": "Heading",
+            "heading_size_1": 75,
+            "text_1": "<p>Discription</p>",
+            "description_size_1": 18,
+            "color_text_1": "#ffffff",
+            "button_label_1": "shop now",
+            "button_link_1": "shopify://collections",
+            "color_btn_bg_1": "#ffffff",
+            "color_btn_text_1": "#000000"
           }
         },
-        "button": {
-          "type": "buttons",
+        "template--21206638625047__118908e5-1a09-4e12-bce0-66b31cd3604e-image-2": {
+          "type": "image",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify:\/\/collections\/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "image": "shopify://shop_images/m7-banner-2.progressive.webp",
+            "title_1": "Heading",
+            "heading_size_1": 75,
+            "text_1": "<p>Discription</p>",
+            "description_size_1": 18,
+            "color_text_1": "#ffffff",
+            "button_label_1": "shop now",
+            "button_link_1": "shopify://collections",
+            "color_btn_bg_1": "#ffffff",
+            "color_btn_text_1": "#000000"
+          }
+        },
+        "template--21206638625047__118908e5-1a09-4e12-bce0-66b31cd3604e-image-3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/m7-banner-3.progressive.webp",
+            "title_1": "Heading",
+            "heading_size_1": 75,
+            "text_1": "<p>Discription</p>",
+            "description_size_1": 18,
+            "color_text_1": "#ffffff",
+            "button_label_1": "shop now",
+            "button_link_1": "shopify://collections",
+            "color_btn_bg_1": "#ffffff",
+            "color_btn_text_1": "#000000"
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "template--21206638625047__118908e5-1a09-4e12-bce0-66b31cd3604e-image-1",
+        "template--21206638625047__118908e5-1a09-4e12-bce0-66b31cd3604e-image-2",
+        "template--21206638625047__118908e5-1a09-4e12-bce0-66b31cd3604e-image-3"
       ],
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "inverse",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "3e76f484-ad88-49f5-b1e4-94ee7a2b1cf1": {
+      "type": "product-list",
+      "blocks": {
+        "template--21206638625047__3e76f484-ad88-49f5-b1e4-94ee7a2b1cf1-tab-1": {
+          "type": "tab",
+          "settings": {
+            "tab_heading": "New Arrival",
+            "collection": "automated-collection"
+          }
+        },
+        "template--21206638625047__3e76f484-ad88-49f5-b1e4-94ee7a2b1cf1-tab-2": {
+          "type": "tab",
+          "settings": {
+            "tab_heading": "top sale",
+            "collection": "hydrogen"
+          }
+        },
+        "template--21206638625047__3e76f484-ad88-49f5-b1e4-94ee7a2b1cf1-tab-3": {
+          "type": "tab",
+          "settings": {
+            "tab_heading": "featured",
+            "collection": "frontpage"
+          }
+        }
+      },
+      "block_order": [
+        "template--21206638625047__3e76f484-ad88-49f5-b1e4-94ee7a2b1cf1-tab-1",
+        "template--21206638625047__3e76f484-ad88-49f5-b1e4-94ee7a2b1cf1-tab-2",
+        "template--21206638625047__3e76f484-ad88-49f5-b1e4-94ee7a2b1cf1-tab-3"
+      ],
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
+        "products_to_show": 4,
         "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "background-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "enable_quick_add": false,
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "17caa1a7-821b-4a4f-aea5-6281bd286f54": {
+      "type": "video-background",
+      "settings": {
+        "heading": "COLOUR CANYON",
+        "video": "shopify://files/videos/skulls.mp4",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "full_width": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
         "padding_bottom": 36
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "118908e5-1a09-4e12-bce0-66b31cd3604e",
+    "3e76f484-ad88-49f5-b1e4-94ee7a2b1cf1",
+    "17caa1a7-821b-4a4f-aea5-6281bd286f54"
   ]
 }
