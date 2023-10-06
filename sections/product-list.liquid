@@ -1,0 +1,173 @@
+{{ 'section-product-list.css' | asset_url | stylesheet_tag }}
+
+<section class="page-width" style="margin-bottom:80px; padding-top:{{ section.settings.padding_top }}px ; padding-bottom:{{ section.settings.padding_bottom }}px">
+  <ul class="tabs">
+    {% for block in section.blocks %}
+      <li>
+        <a href="#tab-{{ forloop.index }}">{{ block.settings.tab_heading }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  {% for block in section.blocks %}
+    <div id="tab-{{ forloop.index }}">
+      <div class="product-container">
+        {% for product in block.settings.collection.products %}
+          {% comment %} {{ product | json }} {% endcomment %}
+          {% if product != null %}
+            <div class="product_item">
+              <a href="{{ product.url }}">
+                <div class="product-image">
+                  <img src="{{ product.featured_media |img_url: '' }}" alt="">
+                  <img
+                    class="alt-img"
+                    src="{{ product.featured_media |img_url: '' }}"
+                    alt="">
+                </div>
+              </a>
+              <div class="product-info">
+                <a href="{{ product.url }}" class="product-info_heading">
+                  {{ product.title | escape }}</a>
+                <p class="product-info_price">
+                  {{ product.price | money }}</a>
+              </p>
+            </div>
+            <div class="product-action">
+              <a href="#" class="icon">
+                {% render 'eyes-icon' %}
+              </a>
+              <a href="#" class="icon add-to-cart">
+                {% render 'cart-icon' %}
+              </a>
+              <a href="#" class="icon whist-list">
+                {% render 'heart-icon' %}
+              </a>
+            </div>
+            </div>
+          {% else %}
+            <h2>There are no product in this collection</h2>
+          {% endif %}
+        {% endfor %}
+
+      </div>
+    </div>
+
+  {% endfor %}
+  <div class="see-all">
+    <a href="/collection/all">View all products</a>
+  </div>
+
+  <script
+    src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous"></script>
+
+  <script>
+    $(document).ready(function() {
+      $("ul.tabs").each(function() {
+        var active,
+          content,
+          links = $(this).find("a");
+        active = links.first().addClass("active");
+        content = $(active.attr("href"));
+        links.not(":first").each(function() {
+          $($(this).attr("href")).hide();
+        });
+        $(this).find("a").click(function(e) {
+          active.removeClass("active");
+          content.hide();
+          active = $(this);
+          content = $($(this).attr("href"));
+          active.addClass("active");
+          content.show();
+          return false;
+        });
+      });
+    });
+  </script>
+</section>
+{% schema %}
+  {
+    "name": "Product List",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Select collection"
+      },
+      {
+        "type": "range",
+        "id": "products_to_show",
+        "min": 2,
+        "max": 25,
+        "step": 1,
+        "default": 4,
+        "label": "Product to show"
+      },
+      {
+        "type": "range",
+        "id": "columns_desktop",
+        "min": 1,
+        "max": 5,
+        "step": 1,
+        "default": 4,
+        "label": "Number of columns in desktop"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding top",
+        "default": 36
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding bottom",
+        "default": 36
+      }
+    ],
+    "blocks": [
+      {
+        "type": "tab",
+        "name": "Tab Content",
+        "settings": [
+          {
+            "id": "tab_heading",
+            "type": "text",
+            "default": "New Arrival",
+            "label": "Heading"
+          }, {
+            "type": "collection",
+            "id": "collection",
+            "label": "Select collection"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product List",
+        "blocks": [
+          {
+            "type": "tab"
+          }, {
+            "type": "tab"
+
+          }, {
+            "type": "tab"
+
+          }
+        ]
+
+      }
+    ]
+  }
+{% endschema %}

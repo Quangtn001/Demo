@@ -1,0 +1,122 @@
+.banner_container {
+  display: grid;
+  grid-template-columns: 61.1% auto auto; /* banner_content_1 chiếm 61.1%, banner_content_2 và banner_content_3 sẽ sử dụng chiều rộng tự động còn lại */
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+.banner_content_1 {
+  grid-area: 1 / 1 / 3 / 2;
+}
+.banner_content_2 {
+  grid-area: 1 / 2 / 2 / 3;
+}
+.banner_content_3 {
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.banner_content_1,
+.banner_content_2,
+.banner_content_3 {
+  position: relative;
+  overflow: hidden;
+  background-color: #262626;
+  cursor: pointer;
+}
+
+.banner_image {
+  height: 100%;
+}
+
+.banner_image img {
+  width: 100%;
+  height: 100%;
+  transform: scale3d(1.1, 1.1, 1.1);
+}
+
+.banner_content_1:hover .banner_image img,
+.banner_content_2:hover .banner_image img,
+.banner_content_3:hover .banner_image img {
+  opacity: 0.3;
+  transform: scale3d(1, 1, 1);
+  transition: all 0.3s ease-in-out;
+}
+
+.banner--info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+}
+.table-banner {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+.table-cell-banner {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0 15px;
+  text-align: center;
+}
+
+.banner--info .title {
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+.banner--info .heading {
+  font-size: 75px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-top: 5px;
+  letter-spacing: 5px;
+  color: #fff;
+}
+.btn-bg-white {
+  position: relative;
+  display: inline-block;
+  font-size: 12px;
+  padding: 15px 45px;
+  margin-top: 15px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  border-radius: 0;
+  text-decoration: none;
+}
+.banner--info-bottom {
+  transform: translate(0);
+  -webkit-transform: translate(0, 0);
+  top: auto;
+  bottom: 8%;
+  text-align: left;
+  left: 6%;
+  width: 90%;
+  height: auto;
+}
+@media (max-width: 767px) {
+  .banner_container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .banner_content_1,
+  .banner_content_2,
+  .banner_content_3 {
+    grid-area: auto;
+  }
+
+  .banner--info .heading {
+    font-size: 24px !important;
+  }
+
+  .btn-bg-white {
+    padding: 12px 30px;
+  }
+}
