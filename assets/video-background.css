@@ -1,0 +1,143 @@
+/* Existing CSS rules */
+.video-container {
+  padding-top: 13%;
+  padding-bottom: 13%;
+  background-color: #252525;
+}
+
+.cover-background {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.video-info {
+  text-align: center;
+  position: relative;
+}
+
+.video-container .video-info h2 {
+  color: #fff;
+  font-size: 72px;
+  margin-bottom: 36px;
+  margin-top: 0;
+  font-weight: 700;
+}
+
+.video-popups {
+  background: rgba(255, 255, 255, 0.2);
+  display: inline-block;
+  border-radius: 100%;
+  position: relative;
+  transition: all 0.5s;
+  cursor: pointer;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  margin: 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.video-popups:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.video-popups:before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  right: -5px;
+  top: -5px;
+  bottom: -5px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 100%;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.video-popups:hover:before {
+  opacity: 1;
+  left: -15px;
+  right: -15px;
+  top: -15px;
+  bottom: -15px;
+}
+
+.video-popups a {
+  transition: all 0.5s;
+  display: inline-block;
+  height: 80px;
+}
+
+.video-popups:hover a {
+  transform: scale(0.7);
+  -webkit-transform: scale(0.7);
+}
+
+a .video_popup_bg img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  object-fit: cover;
+}
+
+.video-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 998; /* Bắt buộc ít hơn z-index của popup */
+}
+
+/* Styles for the popup */
+.video-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  z-index: 999;
+  width: 100%; /* Kích thước popup trên màn hình nhỏ */
+  padding: 10px;
+}
+.video-popup-content iframe {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 767px) {
+  .video-container .video-info h2 {
+    font-size: 30px;
+  }
+
+  .video-popups {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+  }
+  .video-popups a {
+    height: 50px;
+  }
+  a.video_popup_bg img {
+    width: 50px;
+    height: auto;
+  }
+}
+@media (min-width: 1024px) {
+  /* Increase the size of the popup on larger screens */
+  .video-popup {
+    width: 70%; /* Kích thước popup trên màn hình lớn */
+  }
+
+  /* Increase the size of the video iframe on larger screens */
+  .video-popup-content iframe {
+    width: 80%; /* Điều chỉnh chiều rộng của video */
+    height: 80vh; /* Điều chỉnh chiều cao của video, có thể thay đổi theo ý muốn */
+  }
+}

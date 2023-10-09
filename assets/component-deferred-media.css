@@ -83,8 +83,8 @@
   width: 6.2rem;
   position: absolute;
   left: 50%;
-  top: 60%;
-  transform: translate(-60%, -50%) scale(1);
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1);
   transition: transform var(--duration-short) ease,
     color var(--duration-short) ease;
   z-index: 1;
