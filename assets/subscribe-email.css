@@ -1,0 +1,102 @@
+.subscribe-background {
+  padding: 90px 0;
+  background-color: #252525;
+}
+
+.cover-background {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.subscribe-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.subscribe-info {
+  color: #fff;
+}
+
+.subscribe-info .subscribe-heading {
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 10px;
+}
+
+.subscribe-text {
+  margin: 0 0 15px;
+}
+
+#subscribe-from {
+  max-width: 700px;
+}
+
+.subs-form {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.input-group {
+  display: block;
+}
+
+#subscribe-from .subscribe-email {
+  background: none;
+  border: 1px solid #fff;
+  color: #fff;
+  outline: none !important;
+  width: 530px;
+  line-height: 32px;
+  padding: 25px 140px 25px 30px;
+  margin: 0;
+  font-size: 16px;
+  height: auto;
+}
+
+#subscribe-from .subscribe-email:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+#subscribe-from .subscribe-email::placeholder {
+  color: #fff;
+}
+
+#subscribe-from .btn-scr {
+  color: #fff;
+  padding: 25px 30px;
+  line-height: 32px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+button#Subscribe {
+  border: 0;
+  background: transparent;
+  color: #4a4141;
+  font-size: 16px;
+  font-weight: 700;
+  height: 50px;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+@media (max-width: 767px) {
+  .subscribe-container {
+    flex-direction: column;
+  }
+  #subscribe-from .subscribe-email {
+    width: 300px;
+  }
+
+  button#Subscribe {
+    font-size: 13px;
+  }
+}

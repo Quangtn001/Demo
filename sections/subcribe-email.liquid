@@ -1,0 +1,123 @@
+{{ 'subscribe-email.css' | asset_url | stylesheet_tag }}
+<div class="subscribe-background lazy cover-background" style="display: block; background-image: url(&quot;//mantis-section.myshopify.com/cdn/shop/files/m7-bg-2_1920x.progressive.jpg&quot;);" >
+
+    <div class="page-width">
+    <div class="subscribe-container">
+      <div class="subscribe-info">
+          <h2 class="subscribe-heading">Join Our Newsletter</h2>
+          <p class="subscribe-text">Get off 20% for your next purchase!</p>
+      </div>
+      <div class="subscribe-from" id="subscribe-from">
+        <form method="post" action="/" id="contact_form" accept-charset="UTF-8" class="subs-form">
+        <div class="input-group password__input-group">
+          <input type="email" name="contact[email]" id="Email" class="subscribe-email" value="" placeholder="Enter your email address..." autocorrect="off" autocapitalize="off">
+          <span class="input-group__btn">
+            <button type="submit" class="btn-scr" name="commit" id="Subscribe">
+              <span>Subscribe</span>
+            </button>
+          </span>
+        </div>
+        
+        </form>
+      </div>
+    </div>
+ 
+  </div>
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "Subscribe email",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+      {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "info": "t:sections.email-signup-banner.settings.color_scheme.info",
+      "default": "background-1"
+    },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding top",
+        "default": 36
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding bottom",
+        "default": 36
+      }
+    ],
+    "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Join Our Newsletter",
+          "label": "Heading"
+        },
+        {
+          "type": "range",
+          "id": "heading_size",
+          "min": 16,
+          "max": 72,
+          "unit": "px",
+          "label": "Heading size",
+          "default": 36
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "name": "Paragraph",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>Be the first to know when we launch.</p>",
+          "label": "Paragraph"
+        }
+      ]
+    },
+    {
+      "type": "email_form",
+      "name": "Email",
+      "limit": 1
+    }
+  ],
+    "presets": [
+      {
+        "name": "Subscribe Email",
+        "blocks": [
+          {
+            "type":"heading"
+          },{
+            "type":"paragraph"
+
+          },{
+            "type":"email_form"
+
+          }
+        ]
+      
+      }
+    ]
+  }
+{% endschema %}
