@@ -16,12 +16,12 @@
   justify-content: space-between;
 }
 
-.subscribe-info {
-  color: #fff;
+.subscribe-content {
+  display: flex;
+  flex-direction: column;
 }
 
-.subscribe-info .subscribe-heading {
-  font-size: 36px;
+.subscribe-heading {
   font-weight: 700;
   color: #fff;
   margin: 0 0 10px;
@@ -29,10 +29,12 @@
 
 .subscribe-text {
   margin: 0 0 15px;
+  color: #fff;
 }
 
 #subscribe-from {
   max-width: 700px;
+  float: right;
 }
 
 .subs-form {
@@ -92,6 +94,11 @@ button#Subscribe {
   .subscribe-container {
     flex-direction: column;
   }
+
+  .subscribe-content {
+    align-items: center;
+  }
+
   #subscribe-from .subscribe-email {
     width: 300px;
   }

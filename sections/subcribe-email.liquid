@@ -1,32 +1,53 @@
 {{ 'subscribe-email.css' | asset_url | stylesheet_tag }}
-<div class="subscribe-background lazy cover-background" style="display: block; background-image: url(&quot;//mantis-section.myshopify.com/cdn/shop/files/m7-bg-2_1920x.progressive.jpg&quot;);" >
 
-    <div class="page-width">
-    <div class="subscribe-container">
-      <div class="subscribe-info">
-          <h2 class="subscribe-heading">Join Our Newsletter</h2>
-          <p class="subscribe-text">Get off 20% for your next purchase!</p>
-      </div>
-      <div class="subscribe-from" id="subscribe-from">
-        <form method="post" action="/" id="contact_form" accept-charset="UTF-8" class="subs-form">
-        <div class="input-group password__input-group">
-          <input type="email" name="contact[email]" id="Email" class="subscribe-email" value="" placeholder="Enter your email address..." autocorrect="off" autocapitalize="off">
-          <span class="input-group__btn">
-            <button type="submit" class="btn-scr" name="commit" id="Subscribe">
-              <span>Subscribe</span>
-            </button>
-          </span>
-        </div>
-        
-        </form>
-      </div>
+
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient">
+  <div class="subscribe-background lazy cover-background" 
+  style="display: block; background-image: url({%if section.settings.background_image != blank %} {{ section.settings.background_image | img_url: '' }}{% endif %});" >
+  <div class="page-width subscribe-container">
+    <div class="subscribe-content">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          <div class="subscribe-info">
+            {% when "heading" %}
+            <h2 class="subscribe-heading" style="font-size: {{ block.settings.heading_size }}px;" {{ block.shopify_attributes }}>{{ block.settings.heading }}</h2>
+            {% when "paragraph" %}
+            <p class="subscribe-text"  {{ block.shopify_attributes }}>{{ block.settings.text }}</p>
+          </div>
+          {% when "email_form"  %}
+            <div class="subscribe-from" id="subscribe-from">
+              <form method="post" action="/" id="contact_form" accept-charset="UTF-8" class="subs-form">
+                <div class="input-group password__input-group">
+                  <input type="email" name="contact[email]" id="Email" class="subscribe-email" value="" placeholder="Enter your email address..." autocorrect="off" autocapitalize="off">
+                  <span class="input-group__btn">
+                    <button type="submit" class="btn-scr" name="commit" id="Subscribe">
+                      <span>Subscribe</span>
+                    </button>
+                  </span>
+                </div>
+              </form>
+            </div>
+        {% endcase %}
+      {% endfor %}
     </div>
- 
   </div>
 </div>
-
-
-
+</div>
 {% schema %}
   {
     "name": "Subscribe email",
@@ -34,12 +55,17 @@
     "class": "section",
     "settings": [
       {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background Image"
+      },
+      {
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "Color scheme",
       "info": "t:sections.email-signup-banner.settings.color_scheme.info",
       "default": "background-1"
-    },
+      },
       {
         "type": "range",
         "id": "padding_top",
@@ -71,8 +97,7 @@
           "id": "heading",
           "default": "Join Our Newsletter",
           "label": "Heading"
-        },
-        {
+        },{
           "type": "range",
           "id": "heading_size",
           "min": 16,
@@ -89,9 +114,9 @@
       "limit": 1,
       "settings": [
         {
-          "type": "richtext",
+          "type": "text",
           "id": "text",
-          "default": "<p>Be the first to know when we launch.</p>",
+          "default": "Be the first to know when we launch.",
           "label": "Paragraph"
         }
       ]
@@ -101,23 +126,23 @@
       "name": "Email",
       "limit": 1
     }
-  ],
-    "presets": [
-      {
-        "name": "Subscribe Email",
-        "blocks": [
-          {
-            "type":"heading"
-          },{
-            "type":"paragraph"
+    ],
+      "presets": [
+        {
+          "name": "Subscribe Email",
+          "blocks": [
+            {
+              "type":"heading"
+            },{
+              "type":"paragraph"
 
-          },{
-            "type":"email_form"
+            },{
+              "type":"email_form"
 
-          }
-        ]
-      
-      }
-    ]
+            }
+          ]
+        
+        }
+      ]
   }
 {% endschema %}

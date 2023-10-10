@@ -1,0 +1,187 @@
+{{ 'blog-section.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+  <div class="blog-container page-width section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient">
+    <h1 class="blog-title {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fad  e-in  {% endif %}">
+      {{ section.settings.heading }}  
+    </h1>
+    <div class="blog-custom__articles grid--{{ section.settings.columns_desktop }}">
+      {%- if section.settings.blog != blank and section.settings.blog.articles_count > 0 -%}
+        {% for article in section.settings.blog.articles limit: section.settings.post_limit %}
+          <article class="blog-item">
+            <div class="blog_item-image">
+              <a href="{{ article.url }}">
+                <img
+                  style="display: inline-block;"
+                  srcset="
+                    {%- if article.image.src.width >= 165 -%}{{ article.image.src | image_url: width: 165 }} 165w,{%- endif -%}
+                    {%- if article.image.src.width >= 360 -%}{{ article.image.src | image_url: width: 360 }} 360w,{%- endif -%}
+                    {%- if article.image.src.width >= 533 -%}{{ article.image.src | image_url: width: 533 }} 533w,{%- endif -%}
+                    {%- if article.image.src.width >= 720 -%}{{ article.image.src | image_url: width: 720 }} 720w,{%- endif -%}
+                    {%- if article.image.src.width >= 1000 -%}{{ article.image.src | image_url: width: 1000 }} 1000w,{%- endif -%}
+                    {%- if article.image.src.width >= 1500 -%}{{ article.image.src | image_url: width: 1500 }} 1500w,{%- endif -%}
+                    {{ article.image.src | image_url }} {{ article.image.src.width }}w
+                  "
+                  src="{{ article.image.src | image_url: width: 533 }}"
+                  sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                  alt="{{ article.image.src.alt | escape }}"
+                  class="motion-reduce"
+                  {% unless lazy_load == false %}
+                    loading="lazy"
+                  {% endunless %}
+                  width="{{ article.image.width }}"
+                  height="{{ article.image.height }}"
+                >
+              </a>
+            </div>
+            <div class="blog_item-info">
+              <div class="author-date-blog">
+                {%- if section.settings.show_author -%}
+                  <span>{{ article.author }},</span>
+                {%- endif -%}
+                <span class="posted-on">
+                  {%- if section.settings.show_date -%}
+                    <time datetime="{{ article.published_at  }}">{{ article.published_at | time_tag: format: 'date' }}</time>
+                  {%- endif -%}
+                </span>
+              </div>
+              <h3 class="entry-blog-title"><a href="{{ article.url }}">{{ article.title }}</a></h3>
+              <div class="excerpt-article">
+                {%- if article.excerpt.size > 0 -%}
+                  {{ article.excerpt | strip_html | truncatewords: 20 }}
+                {%- else -%}
+                  {{ article.content | strip_html | truncatewords: 20 }}
+                {%- endif -%}
+              </div>
+                <a href="{{ article.url }}" class="read-more">Read more</a>
+            </div>
+          </article>
+        {% endfor %}
+      {%- else -%}
+      {% for i in (1..section.settings.post_limit) -%}
+        {%- assign placeholder_image_index = forloop.index0 | modulo: 3 | plus: 1 -%}
+        {%- assign placeholder_image = 'blog-apparel-' | append: placeholder_image_index -%}
+        <article class="blog-item">
+          <div class="blog_item-image">
+            {{ placeholder_image | placeholder_svg_tag: 'blog-placeholder-svg' }}
+          </div>
+          <div class="blog_item-info">
+            <div class="author-date-blog">
+              <span>Name of author,</span>
+              <span class="posted-on">
+                <time datetime="">DateTime</time>
+              </span>
+            </div>
+            <h3 class="entry-blog-title"><a href="#">Blog title</a></h3>
+            <div class="excerpt-article">
+                Blog content here...
+            </div>
+              <a href="#" class="read-more">Read more</a>
+          </div>
+        </article>
+      {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+
+
+{% schema %}
+{
+  "name": "Blog Custom",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Fashion Blog",
+      "label": "Heading"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "t:sections.featured-blog.settings.blog.label"
+    },
+    {
+      "type": "range",
+      "id": "post_limit",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3,
+      "label": "t:sections.featured-blog.settings.post_limit.label"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3,
+      "label": "t:sections.featured-blog.settings.columns_desktop.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Background color",
+      "info": "Background color",
+      "default": "background-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "default": false,
+      "label": "t:sections.featured-blog.settings.show_date.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "default": false,
+      "label": "t:sections.featured-blog.settings.show_author.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog-custom"
+    }
+  ]
+}
+{% endschema %}

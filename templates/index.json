@@ -7,9 +7,9 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/m7-banner-1.progressive_338e2757-da30-49f6-bfac-803cc166c2d8.jpg",
-            "title_1": "Heading",
+            "title_1": "HELLO SUMMER",
             "heading_size_1": 75,
-            "text_1": "<p>Discription</p>",
+            "text_1": "<p>#woman #hello summer</p>",
             "description_size_1": 18,
             "color_text_1": "#ffffff",
             "button_label_1": "shop now",
@@ -22,9 +22,9 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/m7-banner-2.progressive.webp",
-            "title_1": "Heading",
+            "title_1": "ITALIAN 2018",
             "heading_size_1": 75,
-            "text_1": "<p>Discription</p>",
+            "text_1": "<p>#man style</p>",
             "description_size_1": 18,
             "color_text_1": "#ffffff",
             "button_label_1": "shop now",
@@ -37,9 +37,9 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/m7-banner-3.progressive.webp",
-            "title_1": "Heading",
+            "title_1": "NEW KIDS",
             "heading_size_1": 75,
-            "text_1": "<p>Discription</p>",
+            "text_1": "<p>#kids fashion</p>",
             "description_size_1": 18,
             "color_text_1": "#ffffff",
             "button_label_1": "shop now",
@@ -55,8 +55,8 @@
         "template--21206638625047__118908e5-1a09-4e12-bce0-66b31cd3604e-image-3"
       ],
       "settings": {
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "3e76f484-ad88-49f5-b1e4-94ee7a2b1cf1": {
@@ -96,22 +96,145 @@
         "padding_bottom": 36
       }
     },
-    "17caa1a7-821b-4a4f-aea5-6281bd286f54": {
+    "50c53f46-4286-4530-a4e4-8e88dd0c3234": {
+      "type": "testimonials",
+      "blocks": {
+        "template--21247195382039__50c53f46-4286-4530-a4e4-8e88dd0c3234-testimonial-slider-1": {
+          "type": "testimonial-slider",
+          "settings": {
+            "testimonials_img": "shopify://shop_images/m7-banner-1.progressive_22ee16c1-45dd-4a29-8e7c-325d9b7022f7.jpg",
+            "testimonials_fb": "Phasellus ut felis odio. Fusce hendrerit, ex ac finibus pulvinar, tortor felis egestas turpis, id pellentesque ligula risus vel sem. Nullam ut nunc a magna varius varius.",
+            "testimonials_name": "Ophelia Conner",
+            "testimonials_role": "Customer"
+          }
+        },
+        "template--21247195382039__50c53f46-4286-4530-a4e4-8e88dd0c3234-testimonial-slider-2": {
+          "type": "testimonial-slider",
+          "settings": {
+            "testimonials_img": "shopify://shop_images/m7-banner-3.progressive.webp",
+            "testimonials_fb": "Phasellus ut felis odio. Fusce hendrerit, ex ac finibus pulvinar, tortor felis egestas turpis, id pellentesque ligula risus vel sem. Nullam ut nunc a magna varius varius.",
+            "testimonials_name": "Ophelia Conner",
+            "testimonials_role": "Customer"
+          }
+        },
+        "template--21247195382039__50c53f46-4286-4530-a4e4-8e88dd0c3234-testimonial-slider-3": {
+          "type": "testimonial-slider",
+          "settings": {
+            "testimonials_img": "shopify://shop_images/product-4-1_large_eb789115-0d66-43c4-a143-7282e170a008.jpg",
+            "testimonials_fb": "Phasellus ut felis odio. Fusce hendrerit, ex ac finibus pulvinar, tortor felis egestas turpis, id pellentesque ligula risus vel sem. Nullam ut nunc a magna varius varius.",
+            "testimonials_name": "Ophelia Conner",
+            "testimonials_role": "Customer"
+          }
+        }
+      },
+      "block_order": [
+        "template--21247195382039__50c53f46-4286-4530-a4e4-8e88dd0c3234-testimonial-slider-1",
+        "template--21247195382039__50c53f46-4286-4530-a4e4-8e88dd0c3234-testimonial-slider-2",
+        "template--21247195382039__50c53f46-4286-4530-a4e4-8e88dd0c3234-testimonial-slider-3"
+      ],
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "1e19a833-dcbb-4aab-ba2d-5366ca6f08bd": {
       "type": "video-background",
       "settings": {
         "heading": "COLOUR CANYON",
-        "video": "shopify://files/videos/skulls.mp4",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "full_width": true,
-        "enable_video_looping": false,
+        "video_url": "https://player.vimeo.com/video/172601404?autoplay=1",
+        "cover_image": "shopify://shop_images/m7-bg-1_1920x.progressive_ef279803-6853-4a2e-80c6-39c8960aed86.webp"
+      }
+    },
+    "dd3e1b21-ad5a-48ee-858f-79d0208a02f3": {
+      "type": "latest-collection",
+      "blocks": {
+        "template--21247195382039__dd3e1b21-ad5a-48ee-858f-79d0208a02f3-latest_collection-1": {
+          "type": "latest_collection",
+          "settings": {
+            "collection": "automated-collection"
+          }
+        },
+        "template--21247195382039__dd3e1b21-ad5a-48ee-858f-79d0208a02f3-latest_collection-2": {
+          "type": "latest_collection",
+          "settings": {
+            "collection": "hydrogen"
+          }
+        },
+        "template--21247195382039__dd3e1b21-ad5a-48ee-858f-79d0208a02f3-latest_collection-3": {
+          "type": "latest_collection",
+          "settings": {
+            "collection": "frontpage"
+          }
+        }
+      },
+      "block_order": [
+        "template--21247195382039__dd3e1b21-ad5a-48ee-858f-79d0208a02f3-latest_collection-1",
+        "template--21247195382039__dd3e1b21-ad5a-48ee-858f-79d0208a02f3-latest_collection-2",
+        "template--21247195382039__dd3e1b21-ad5a-48ee-858f-79d0208a02f3-latest_collection-3"
+      ],
+      "settings": {
+        "title": "Latest Collection",
+        "heading_size": 36,
+        "color_scheme": "",
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 60
+      }
+    },
+    "e76ad0bc-44ea-46c8-8533-1642fd283f53": {
+      "type": "blog",
+      "settings": {
+        "heading": "Fashion Blog",
+        "blog": "news",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "color_scheme": "scheme-9a162d3e-c4f3-4ec0-9eb6-48b2ab5171d5",
+        "show_date": true,
+        "show_author": true,
+        "padding_top": 70,
+        "padding_bottom": 70
+      }
+    },
+    "027a7cd8-a3e2-49da-906c-827e88873805": {
+      "type": "subcribe-email",
+      "blocks": {
+        "template--21247195382039__027a7cd8-a3e2-49da-906c-827e88873805-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Join Our Newsletter",
+            "heading_size": 36
+          }
+        },
+        "template--21247195382039__027a7cd8-a3e2-49da-906c-827e88873805-paragraph-1": {
+          "type": "paragraph",
+          "settings": {
+            "text": "Be the first to know when we launch."
+          }
+        },
+        "template--21247195382039__027a7cd8-a3e2-49da-906c-827e88873805-email_form-1": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "template--21247195382039__027a7cd8-a3e2-49da-906c-827e88873805-heading-1",
+        "template--21247195382039__027a7cd8-a3e2-49da-906c-827e88873805-paragraph-1",
+        "template--21247195382039__027a7cd8-a3e2-49da-906c-827e88873805-email_form-1"
+      ],
+      "settings": {
+        "background_image": "shopify://shop_images/m7-bg-2_1920x.progressive_9450e7f7-fe18-4f16-8e3f-a6f6852e5cbe.webp",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     }
   },
   "order": [
     "118908e5-1a09-4e12-bce0-66b31cd3604e",
     "3e76f484-ad88-49f5-b1e4-94ee7a2b1cf1",
-    "17caa1a7-821b-4a4f-aea5-6281bd286f54"
+    "50c53f46-4286-4530-a4e4-8e88dd0c3234",
+    "1e19a833-dcbb-4aab-ba2d-5366ca6f08bd",
+    "dd3e1b21-ad5a-48ee-858f-79d0208a02f3",
+    "e76ad0bc-44ea-46c8-8533-1642fd283f53",
+    "027a7cd8-a3e2-49da-906c-827e88873805"
   ]
 }
