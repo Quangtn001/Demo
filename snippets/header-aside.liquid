@@ -1,0 +1,61 @@
+{{ 'header-aside.css' | asset_url | stylesheet_tag }}
+
+<aside id="header_aside" class="header--aside">
+  <div class="header-aside-wrapper">
+    <div class="header-aside-inner">
+      <div class="header-widget-bottom">
+        <div class="widget widget_text">
+          <div class="textwidget">
+            <p>
+              <a href="/">
+                <img src="//mantis-section.myshopify.com/cdn/shop/files/home1-logo.png" alt="[Demo Theme] - Mantis">
+              </a>
+            </p>
+          </div>
+        </div>
+        <div class="widget widget_text">
+          <div class="textwidget">
+            <p>Nullam varius porttitor augue id rutrum. Duis vehicula magna at magna tempus rhoncus. Maecenas quis lobortis elit, nec faucibus augue.</p>
+            <p>Phasellus pellentesque mi ut mauris volutpat pellentesque. Donec id leo efficitur, bibendum enim ac, consectetur ex.</p>
+          </div>
+        </div>
+        <div class="padding-top-30 widget widget_media_image">
+          <a href="/">
+            <img src="//mantis-section.myshopify.com/cdn/shop/files/aside-image_360x360.jpg" class="size-full" alt="">
+          </a>
+        </div>
+        <div class="padding-top-30 widget widget_text">
+          <div class="textwidget">
+            <p>
+              <a href="tel:+61225315600">(+612) 2531 5600</a>
+              <br>
+              <a href="mailto:info@la-studioweb.com">info@la-studioweb.com</a>
+              <br> PO Box 1622 Colins Street West
+            </p>
+            <p>
+              <a href="https://www.google.com/maps" target="_blank" rel="noopener">
+                <u>Google maps</u>
+              </a>
+            </p>
+            <div class="social-media-link style-default">
+              <a href="#" class="facebook" title="Facebook" target="_blank" rel="nofollow">
+               {% render "icon-facebook" %}
+              </a>
+              <a href="#" class="twitter" title="Twitter" target="_blank" rel="nofollow">
+                {% render "icon-twitter" %}
+              </a>
+              <a href="#" class="pinterest" title="Pinterest" target="_blank" rel="nofollow">
+                {% render "icon-pinterest" %}
+
+              </a>
+              <a href="#" class="instagram" title="Instagram" target="_blank" rel="nofollow">
+                {% render "icon-instagram" %}
+
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</aside>

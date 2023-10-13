@@ -1,0 +1,113 @@
+.sticky-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  z-index: 9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: top 0.3s;
+}
+
+.header-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 90px;
+}
+
+.mobile-component-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.mobile-menu-wrap {
+  position: absolute;
+  width: 100%;
+  z-index: 9;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(10px);
+  backface-visibility: hidden;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.mobile-menu-wrap .dl-menuwrapper {
+  width: 100%;
+  float: left;
+  position: relative;
+  perspective: 1000px;
+  perspective-origin: 50% 200%;
+  z-index: 9;
+}
+
+body.mobile-menu-wrap .dl-menu {
+  max-height: 100vh;
+  overflow: auto;
+}
+
+.mobile-menu-wrap .dl-menuwrapper ul {
+  background: #fff;
+  border-color: #8c8c8c33;
+}
+
+.mobile-menu-wrap .dl-menuwrapper ul .dl-menu {
+  border-width: 1px 0 0;
+  border-style: solid;
+  box-shadow: 0 6px 12px #00000013;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.076);
+}
+
+.mobile-menu-wrap .dl-menuwrapper li {
+  border-width: 1px 0 0;
+  border-style: solid;
+  position: relative;
+  border-color: #8c8c8c33;
+}
+
+.mobile-menu-wrap .dl-menuwrapper .dl-menu > li:first-child {
+  border-top-width: 0;
+}
+
+.dl-menuwrapper li a {
+  display: block;
+  position: relative;
+  padding: 12px 30px;
+  line-height: 30px;
+  font-size: 14px;
+}
+
+.mobile-menu-wrap .dl-menu > li > a {
+  color: #4a4141;
+  background-color: #0000;
+  font-weight: 600;
+}
+
+.mobile-menu-wrap .dl-menuwrapper span.narrow,
+.mobile-menu-wrap .dl-menuwrapper span.narrow-2 {
+  width: 50px;
+  height: 100%;
+  position: absolute;
+  display: block;
+  right: 0;
+  top: 0;
+  font-size: 18px;
+  text-align: center;
+  padding: 14px 0;
+}
+
+.mobile-menu-wrap .dl-menu {
+  max-height: 75vh;
+  overflow: auto;
+}
+
+@media (max-width: 767px) {
+  .site-header-mobile .logo a img {
+    max-height: 18px;
+  }
+}

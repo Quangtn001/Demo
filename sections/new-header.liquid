@@ -1,0 +1,192 @@
+{{ 'new-header.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+{% if section.settings.sticky_header %}
+  <style>
+    body {
+      padding-top: 90px;
+    }
+  </style>
+{% else %}
+  <style>
+    body {
+      padding-top: 0;
+    }
+  </style>
+{% endif %}
+
+<header class="section-header hide-on-mobile {% if section.settings.sticky_header %} sticky-menu {% endif %}" id="header" >
+  <div class="page-width">
+    <div class="header-main">
+        <div class=" header-left">
+          <div class="header-logo">
+            <a href="/" itemprop="url" rel="home">
+            <img src="//mantis-section.myshopify.com/cdn/shop/files/home1-logo.png" alt="[Demo Theme] - Mantis" itemprop="logo">
+            </a>
+          </div>
+        </div>
+        <div class=" header-middle">
+          <div class="header-component-inner clearfix">
+            <ul class="main-menu">
+              {% for link in section.settings.menu.links %}
+                {% assign hasGrandchildLink = false %}
+                {% assign hasChildLink = false %}
+                {% for childlink in link.links %}
+                  {% assign hasChildLink = true %}
+                  {% for grandchildlink in childlink.links %}
+                    {% assign hasGrandchildLink = true %}
+                    {% break %}
+                  {% endfor %}
+                {% endfor %}
+                <li class="menu-item mm-popup-column mm-popup-column-3 menu-columns-parent}"{% if hasGrandchildLink %} style="position: static;"{% endif %}>
+                  <a href="{{ link.url }}">
+                    <span class="mm-text">{{ link.title }}</span>
+                  </a>
+                  {% if hasChildLink %}
+                    <div class="popup">
+                      <div class="inner">
+                        <ul class="sub-menu">
+                          {% for childlink in link.links %}
+                          <li class="menu-item {% if hasGrandchildLink %} has-grandchildlink {% else %} no-has-grandchildlink {% endif %}">
+                              <a href="{{ childlink.url }}">
+                                <span class="mm-text">{{ childlink.title }}</span>
+                              </a>
+                              {% if childlink.links.size > 0 %}
+                                <ul class="sub-menu">
+                                  {% for grandchildlink in childlink.links %}
+                                    <li class="menu-item menu-item-type-post_type menu-item-object-page first">
+                                      <a href="{{ grandchildlink.url }}">
+                                        <span class="mm-text">{{ grandchildlink.title }}</span>
+                                      </a>
+                                    </li>
+                                  {% endfor %}
+                                </ul>
+                              {% endif %}
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                    </div>
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+            
+          </div>
+        </div>
+        <div class=" header-right">
+          <div class="header-component-inner clearfix">
+            <div class="header_component header_component--linktext la_compt_iem la_com_action--linktext">
+              <a rel="nofollow" class="component-target" href="/account/login">
+                {% render "icon-person"%}
+                <span class="component-target-text">Sign In</span>
+              </a>
+            </div>
+            <div class="header_component header_component--searchbox la_compt_iem la_com_action--searchbox searchbox__01">
+              <a class="component-target btn-search" href="javascript:;">
+                {% render "icon-search" %}
+              </a>
+            </div>
+            <div class="header_component header_component--cart la_compt_iem la_com_action--cart hide-on-mobile">
+              <a rel="nofollow" class="component-target" href="/cart">
+               {% render "cart-icon" %}
+                <span class="component-target-badget la-cart-count">0</span>
+              </a>
+            </div>
+            <div class="header_component header_component--link la_compt_iem la_com_action--aside_header" 
+            style="cursor: pointer;">
+                {% render "menu-icon" %}
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</header> 
+
+<div id="aside-container" class="aside-container ">
+  <a class="btn-aside-toggle" href="#">
+    {% render "close-icon" %}
+  </a>
+  {% render "header-aside" %}
+</div>
+
+<div class="hide-on-desktop" >
+  {% render "mobile-menu",
+    menu:section.settings.menu,
+    sticky_header:section.settings.sticky_header
+   %}
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js" integrity="sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script>
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+  const asideContainer = document.getElementById('aside-container');
+  const showAsideLink = document.querySelector('.la_com_action--aside_header');
+  const hideAside = document.querySelector('.btn-aside-toggle');
+
+
+  showAsideLink.addEventListener('click', function(e) {
+    e.preventDefault()   
+      asideContainer.style.visibility = 'visible';
+      asideContainer.style.opacity = 1;
+      asideContainer.style.transform = 'translate(0)';
+  });
+  
+  hideAside.addEventListener('click', function(e) {
+    
+    e.preventDefault()   
+    asideContainer.style.visibility = 'hidden';
+    asideContainer.style.opacity = 0;
+    asideContainer.style.transform = 'translate(600px)';
+  });
+});
+</script>
+{% schema %}
+  {
+    "name": "New header",
+    "settings": [
+          {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "t:sections.header.settings.menu.label"
+    },
+      {
+      "type": "checkbox",
+      "id": "sticky_header",
+      "default": false,
+      "label": "Sticky header"
+    },
+       {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 36,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 20
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 36,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 20
+      }
+    ],
+    "blocks":[],
+    "presets":[
+      {
+        "name":"Header custom"
+      }
+    ]
+  }
+{% endschema %}

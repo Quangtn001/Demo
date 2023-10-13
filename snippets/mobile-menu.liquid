@@ -1,0 +1,130 @@
+{{ 'mobile-menu.css' | asset_url | stylesheet_tag }}
+
+
+
+<div id="sticky-wrapper" class=" {% if sticky_header %} sticky-wrapper {% endif  %} " style="height: 90px;">
+  <div class="site-header-mobile">
+    <div class="site-header-outer">
+      <div class="site-header-inner">
+        <div class="page-width">
+          <div class="header-main">
+            <div class="header-component-outer header-component-outer_logo">
+              <div class="logo">
+                  <a href="/" itemprop="url" rel="home">
+                  <img src="//mantis-section.myshopify.com/cdn/shop/files/home1-logo.png" alt="[Demo Theme] - Mantis" itemprop="logo">
+                  </a>
+              </div>
+            </div>
+            <div class="header-component-outer header-component-outer_1">
+              <div class="mobile-component-inner">
+                <div class="header_component header_component--linktext la_compt_iem la_com_action--linktext">
+                  <a rel="nofollow" class="component-target" href="/account/login">
+                  {% render "icon-person"%}
+                  </a>
+                </div>
+                <div class="header_component header_component--searchbox la_compt_iem la_com_action--searchbox searchbox__01 ">
+                  <a class="component-target btn-search" href="javascript:;">
+                    {% render "icon-search" %}
+                  </a>
+                </div>
+                <div class="header_component header_component--primary-menu la_compt_iem la_com_action--primary-menu"
+                 style="cursor: pointer;">
+                    {% render "menu-icon" %}
+                </div>
+                </div>
+              </div>
+            
+          </div>
+        </div>
+        <div class="mobile-menu-wrap" id="mobile-container">
+          <div id="la_mobile_nav" class="dl-menuwrapper">
+            <ul class="dl-menu menu">
+              {% for link in menu.links %}
+                {% assign hasGrandchildLink = false %} 
+                {% for childlink in link.links %}
+                  {% for grandchildlink in childlink.links %}
+                    {% assign hasGrandchildLink = true %}
+                    {% break %}
+                  {% endfor %}
+                {% endfor %}
+                <li class="menu-item menu-item-has-children">
+                  <a href="{{ link.url }}">{{ link.title }}</a>
+                  <span class="narrow">
+                    {% render "icon-narrow" %}
+                  </span>
+                  <ul class="sub-menu" style="display: none;">
+                    {% for childlink in link.links %}
+                      <li class="menu-item menu-item-has-children-2">
+                        <a href="{{ childlink.url }}">{{ childlink.title }}</a>
+                        <span class="narrow">
+                          {% if hasGrandchildLink%}
+                            {% render "icon-narrow" %}
+                          {% endif %}
+                        </span>
+                        <ul class="sub-menu" style="display: none;">
+                          {% for grandchildlink in childlink.links %}
+                            <li>
+                              <a href="{{ grandchildlink.url }}">{{ grandchildlink.title }}</a>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  const mobileContainer = document.getElementById('mobile-container');
+  const showMobile = document.querySelector('.la_com_action--primary-menu');
+
+ 
+  let mobileContainerVisible = false;
+
+  showMobile.addEventListener('click', function(e) {
+  
+    e.preventDefault()   
+      // Nếu là mobile, chỉ thực hiện thay đổi cho mobileContainer
+      if (mobileContainerVisible) {
+        mobileContainer.style.visibility = 'hidden';
+        mobileContainer.style.opacity = 0;
+        mobileContainer.style.backfaceVisibility = 'hidden';
+        mobileContainer.style.transform = 'translateY(10px)';
+        mobileContainer.style.pointerEvents="none";
+        mobileContainerVisible = false;
+      } else {
+        mobileContainer.style.visibility = 'visible';
+        mobileContainer.style.opacity = 1;
+        mobileContainer.style.backfaceVisibility = 'visible';
+        mobileContainer.style.transform = 'translateY(0px)';
+        mobileContainerVisible = true;
+        mobileContainer.style.pointerEvents="auto";
+      }
+    
+  });
+
+    const narrowIcons = document.querySelectorAll('.narrow');
+    narrowIcons.forEach((icon) => {
+      icon.addEventListener('click', function() {
+        const subMenu = this.parentElement.querySelector('.sub-menu');
+        if (subMenu) {
+          if (subMenu.style.display === 'none' || subMenu.style.display === '') {
+            subMenu.style.display = 'block';
+          } else {
+            subMenu.style.display = 'none';
+          }
+        }
+      });
+    });
+});
+
+</script>

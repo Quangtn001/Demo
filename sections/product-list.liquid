@@ -40,15 +40,24 @@
     <div id="tab-{{ forloop.index }}">
       <div class="grid--{{ section.settings.columns_desktop }}">
         {% for product in block.settings.collection.products limit: section.settings.products_to_show %}
+          
           {% if product != null %}
             <div class="product_item">
               <a href="{{ product.url }}">
                 <div class="product-image">
-                  <img src="{{ product.featured_media | img_url: '' }}" alt="">
-                  <img
-                    class="alt-img"
-                    src="{{ product.featured_media | img_url: '' }}"
-                    alt="">
+                  <img src="{{ product.featured_image | img_url: '' }}" alt="">
+                  {% assign first_media = nil %}
+                  {% for media in product.media %}
+                    {% if first_media == nil %}
+                      {% assign first_media = media %}
+                    {% endif %}
+                  {% endfor %}
+
+                  {% if product.media.size >= 2 %}
+                    <div class="alt-img">
+                      <img src="{{ product.media[1].preview_image | image_url}}" alt="">
+                    </div>
+                  {% endif %}
                 </div>
               </a>
               <div class="product-info">
